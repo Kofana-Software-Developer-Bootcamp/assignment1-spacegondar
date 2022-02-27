@@ -5,7 +5,7 @@ formDOM.addEventListener('submit', formSubmit)
 const data = [] // Girilen bilgilerin ilk alındığı dizi
 const allParticipants = [] // Her kişi dizisinin saklandığı ana dizi
 const allPeople = []        // Her kişi objesinin saklandığı ana dizi
-let x = 0, y= 0, z= 0, d = 0 // Grafik sütun değerleri
+let x = 0, y = 0, z = 0, d = 0 // Grafik sütun değerleri
 
 // Radio button inputundan değer alabilmek için tanımlanan fonksiyon
 function radiValue(name) {
@@ -17,13 +17,6 @@ function radiValue(name) {
         }
     }
 }
-
-
-
-
-
-
-
 
 //Form Gönder Etkinliği
 function formSubmit(event) {
@@ -75,10 +68,10 @@ function formSubmit(event) {
 
     //Grafik valuelarının dizi elmenı kontrol edilerek arttırılması
     if (data[1] == "Kofana") {
-        x+=1;
+        x += 1;
     }
     else if (data[1] == "Waikiki") {
-        y+=1;
+        y += 1;
     }
     else if (data[1] == "101") {
         z++;
@@ -104,32 +97,26 @@ function formSubmit(event) {
     console.log(goodInputDOM.value)
     console.log(badInputDOM.value)
 
-    // Grafik Oluşumu
+
     let xValues = ["Kofana", "Waikiki", "A-101", "Trendyol"];
     let yValues = [x, y, z, d];
     let barColors = ["red", "green", "blue", "orange"];
 
-    new Chart("myChart", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: "Bootcamp Başvuru Sayıları"
-            }
+
+    // Grafik Oluşumu
+    var datar = [
+        {
+            x: xValues,
+            y: yValues,
+            type: 'bar'
         }
-    });
+    ];
+
+    Plotly.newPlot('myDiv', datar);
+
+
     // Formun temizlenmesi
     document.getElementById("userForm").reset();
 
 
 }
-
-
