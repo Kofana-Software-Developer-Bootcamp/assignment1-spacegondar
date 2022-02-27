@@ -36,7 +36,7 @@ function formSubmit(event) {
     let goodInputDOM = document.querySelector('#good')
     let badInputDOM = document.querySelector('#bad')
 
-    // 
+    // Obje tanımlaması
     function people(city, bootcamp, etkinlik, hoca, good, bad) {
         this.city = city
         this.bootcamp = bootcamp
@@ -45,6 +45,7 @@ function formSubmit(event) {
         this.good = good
         this.bad = bad
     }
+    // Propların valuelar ile doldurulması
     function addPeople() {
         const peopleObj = new people(
             userForm[0].value,
@@ -58,7 +59,7 @@ function formSubmit(event) {
         son.push(peopleObj)
         console.log(son)
     }
-    // 
+
 
 
 
@@ -71,6 +72,7 @@ function formSubmit(event) {
     data[4] = goodInputDOM.value
     data[5] = badInputDOM.value
 
+    // Kişi bilgilerinin kümilaftif diziye atılması
     parti.push(data.slice())
 
     console.log(parti)
