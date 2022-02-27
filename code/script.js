@@ -77,7 +77,6 @@ function formSubmit(event) {
     // Kişi bilgilerinin kümilaftif diziye atılması
     allParticipants.push(data.slice())
     console.log(allParticipants)
-    
     // Obje oluşturan ve bilgileri yazdıran fonksiyonun çağrılması
     addPeople()
 
