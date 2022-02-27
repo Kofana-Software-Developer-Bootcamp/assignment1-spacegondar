@@ -3,8 +3,8 @@
 let formDOM = document.querySelector("#userForm")
 formDOM.addEventListener('submit', formSubmit)
 const data = [] // Girilen bilgilerin ilk alındığı dizi
-const allParticipants = [] // Her kişi bilgisinin saklandığı ana dizi
-const objectArray = []
+const allParticipants = [] // Her kişi dizisinin saklandığı ana dizi
+const allPeople = []        // Her kişi objesinin saklandığı ana dizi
 
 // Radio button inputundan değer alabilmek için tanımlanan fonksiyon
 function radiValue(name) {
@@ -28,8 +28,9 @@ function radiValue(name) {
 //Form Gönder Etkinliği
 function formSubmit(event) {
     console.clear()         // Her bilgi girişinde console temizlenmesi için
-    event.preventDefault() // default işlemi engellendi
+    event.preventDefault() // Default işlemi engellendi
     console.log("İşlem Gerçekleşti")
+
     // İnput değerleri alma
     let cityInputDOM = document.querySelector('#city')
     const bootInputDOM = document.querySelector('#bootcamps')
@@ -48,23 +49,24 @@ function formSubmit(event) {
     // Propların valuelar ile doldurulması
     function addPeople() {
         const peopleObj = new people(
-            userForm[0].value,
-            userForm[1].value,
+            cityInputDOM.value,
+            bootInputDOM.value,
             radiValue("learn"),
             radiValue("hoca"),
-            userForm[10].value,
-            userForm[11].value
+            goodInputDOM.value,
+            badInputDOM.value
 
         );
-        objectArray.push(peopleObj)
-        console.log(objectArray)
+        // Objelerin kümülatif diziye atanıp yazdırılması
+        allPeople.push(peopleObj)
+        console.log(allPeople)
     }
 
 
 
 
 
-    // Diziye değerleri atama
+    // Diziye input değerlerini atama
     data[0] = cityInputDOM.value
     data[1] = bootInputDOM.value
     data[2] = radiValue("learn")
@@ -74,18 +76,20 @@ function formSubmit(event) {
 
     // Kişi bilgilerinin kümilaftif diziye atılması
     allParticipants.push(data.slice())
-
     console.log(allParticipants)
+    
+    // Obje oluşturan ve bilgileri yazdıran fonksiyonun çağrılması
     addPeople()
-    document.getElementById("userForm").reset();
 
-    // Bilgileri loglamak için 
-    // console.log(cityInputDOM.value)
-    // console.log(bootInputDOM.value)
-    // radiValue("learn")
-    // radiValue("hoca")
-    // console.log(goodInputDOM.value)
-    // console.log(badInputDOM.value)
+    // Son girilen bilgilerin doğrulama için ekrana yazdırılması
+    console.log(cityInputDOM.value)
+    console.log(bootInputDOM.value)
+    console.log(radiValue("learn"))
+    console.log(radiValue("hoca"))
+    console.log(goodInputDOM.value)
+    console.log(badInputDOM.value)
+
+    document.getElementById("userForm").reset();
 
 
 }
