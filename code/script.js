@@ -59,6 +59,7 @@ function formSubmit(event) {
         );
         // Objelerin kümülatif diziye atanıp yazdırılması
         allPeople.push(peopleObj)
+        console.log("Properties içeren dizi:")
         console.log(allPeople)
     }
 
@@ -89,11 +90,13 @@ function formSubmit(event) {
 
     // Kişi bilgilerinin kümilaftif diziye atılması
     allParticipants.push(data.slice())
+    console.log("Değerleri içeren dizi:")
     console.log(allParticipants)
     // Obje oluşturan ve bilgileri yazdıran fonksiyonun çağrılması
     addPeople()
 
     // Son girilen bilgilerin doğrulama için ekrana yazdırılması
+    console.log("Son girilen bilgiler:")
     console.log(cityInputDOM.value)
     console.log(bootInputDOM.value)
     console.log(radiValue("learn"))
