@@ -5,6 +5,7 @@ formDOM.addEventListener('submit', formSubmit)
 const data = [] // Girilen bilgilerin ilk alındığı dizi
 const allParticipants = [] // Her kişi dizisinin saklandığı ana dizi
 const allPeople = []        // Her kişi objesinin saklandığı ana dizi
+let x = 0, y= 0, z= 0, d = 0 // Grafik sütun değerleri
 
 // Radio button inputundan değer alabilmek için tanımlanan fonksiyon
 function radiValue(name) {
@@ -16,7 +17,6 @@ function radiValue(name) {
         }
     }
 }
-
 
 
 
@@ -64,8 +64,6 @@ function formSubmit(event) {
 
 
 
-
-
     // Diziye input değerlerini atama
     data[0] = cityInputDOM.value
     data[1] = bootInputDOM.value
@@ -73,6 +71,21 @@ function formSubmit(event) {
     data[3] = radiValue("hoca")
     data[4] = goodInputDOM.value
     data[5] = badInputDOM.value
+
+    //Grafik valuelarının dizi elmenı kontrol edilerek arttırılması
+    if (data[1] == "Kofana") {
+        x+=1;
+    }
+    else if (data[1] == "Waikiki") {
+        y+=1;
+    }
+    else if (data[1] == "101") {
+        z++;
+    }
+    else {
+        d++;
+    }
+
 
     // Kişi bilgilerinin kümilaftif diziye atılması
     allParticipants.push(data.slice())
@@ -88,8 +101,32 @@ function formSubmit(event) {
     console.log(goodInputDOM.value)
     console.log(badInputDOM.value)
 
+    // Grafik Oluşumu
+    let xValues = ["Kofana", "Waikiki", "A-101", "Trendyol"];
+    let yValues = [x, y, z, d];
+    let barColors = ["red", "green", "blue", "orange", "brown"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "Bootcamp Başvuru Sayıları"
+            }
+        }
+    });
+    // Formun temizlenmesi
     document.getElementById("userForm").reset();
 
 
 }
+
 
