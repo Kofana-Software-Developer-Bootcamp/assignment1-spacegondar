@@ -49,10 +49,10 @@ function formSubmit(event) {
         const peopleObj = new people(
             userForm[0].value,
             userForm[1].value,
-            userForm[2].value,
-            userForm[3].value,
-            userForm[4].value,
-            userForm[5].value
+            radiValue("learn"),
+            radiValue("hoca"),
+            userForm[10].value,
+            userForm[11].value
     
         );
         son.push(peopleObj)
