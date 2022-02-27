@@ -107,7 +107,7 @@ function formSubmit(event) {
     // Grafik Oluşumu
     let xValues = ["Kofana", "Waikiki", "A-101", "Trendyol"];
     let yValues = [x, y, z, d];
-    let barColors = ["red", "green", "blue", "orange", "brown"];
+    let barColors = ["red", "green", "blue", "orange"];
 
     new Chart("myChart", {
         type: "bar",
