@@ -3,8 +3,8 @@
 let formDOM = document.querySelector("#userForm")
 formDOM.addEventListener('submit', formSubmit)
 const data = [] // Girilen bilgilerin ilk alındığı dizi
-const parti = [] // Her kişi bilgisinin saklandığı ana dizi
-const son = []
+const allParticipants = [] // Her kişi bilgisinin saklandığı ana dizi
+const objectArray = []
 
 // Radio button inputundan değer alabilmek için tanımlanan fonksiyon
 function radiValue(name) {
@@ -37,11 +37,11 @@ function formSubmit(event) {
     let badInputDOM = document.querySelector('#bad')
 
     // Obje tanımlaması
-    function people(city, bootcamp, etkinlik, hoca, good, bad) {
+    function people(city, bootcamp, eventVal, teacher, good, bad) {
         this.city = city
         this.bootcamp = bootcamp
-        this.etkinlik = etkinlik
-        this.hoca = hoca
+        this.eventVal = eventVal
+        this.teacher = teacher
         this.good = good
         this.bad = bad
     }
@@ -54,10 +54,10 @@ function formSubmit(event) {
             radiValue("hoca"),
             userForm[10].value,
             userForm[11].value
-    
+
         );
-        son.push(peopleObj)
-        console.log(son)
+        objectArray.push(peopleObj)
+        console.log(objectArray)
     }
 
 
@@ -73,9 +73,9 @@ function formSubmit(event) {
     data[5] = badInputDOM.value
 
     // Kişi bilgilerinin kümilaftif diziye atılması
-    parti.push(data.slice())
+    allParticipants.push(data.slice())
 
-    console.log(parti)
+    console.log(allParticipants)
     addPeople()
     document.getElementById("userForm").reset();
 
